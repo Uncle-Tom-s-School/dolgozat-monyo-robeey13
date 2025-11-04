@@ -1,8 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root{
-  font-family: "Barlow", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Inter", sans-serif;
+  --bg-primary: #000000;
+  --bg-secondary: #1c1c1e;
+  --bg-tertiary: #2c2c2e;
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1a6;
+  --accent: #0a84ff;
+  --success: #30d158;
+  --error: #ff453a;
+  --shadow: rgba(0, 0, 0, 0.5);
 }
 
 *{
@@ -12,15 +20,136 @@
 }
 
 body{
-  padding: 20px 0px;
+  background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+  color: var(--text-primary);
+  padding: 0;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+header {
+  background: rgba(28, 28, 30, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 40px 80px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+header h1 {
+  font-size: 34px;
+  font-weight: 600;
+  letter-spacing: -0.8px;
+  background: linear-gradient(135deg, #ffffff 0%, #a1a1a6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+main {
+  padding: 80px 40px 100px;
+  min-height: calc(100vh - 200px);
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+footer {
+  background: var(--bg-secondary);
+  padding: 40px 60px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -0.1px;
+}
+
+/* Cart container styling */
+.cart > div {
+  background: var(--bg-secondary);
+  border-radius: 24px;
+  padding: 60px 40px;
+  margin: 40px auto;
+  max-width: 800px;
+  box-shadow: 0 8px 32px var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Big header text for cart count */
+.cart > div:first-child {
+  font-size: 48px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+  background: linear-gradient(135deg, #ffffff 0%, #a1a1a6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+}
+
+/* Cart items list */
+.cart ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Individual cart items */
+.cart li {
+  background: var(--bg-tertiary);
+  border-radius: 16px;
+  padding: 24px 32px;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: -0.3px;
+}
+
+.cart li:hover {
+  background: rgba(44, 44, 46, 0.8);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.cart h2 {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.cart p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  letter-spacing: -0.1px;
 }
 
 .beerCardWrapper{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  max-width: 1000px;
-  width: 90%;
-  gap: 40px;
+  max-width: 100%;
+  width: 100%;
+  gap: 48px;
   margin: auto;
 }
 
@@ -29,21 +158,140 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  img{
-    width: 100%;
-  }
+  background: linear-gradient(145deg, rgba(28, 28, 30, 0.95), rgba(28, 28, 30, 0.85));
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.beerCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(10, 132, 255, 0.3), 0 0 40px rgba(0, 0, 0, 0.8);
+  border-color: rgba(10, 132, 255, 0.3);
+}
+
+.beerCard img{
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  background: linear-gradient(135deg, rgba(44, 44, 46, 1), rgba(28, 28, 30, 1));
+  transition: transform 0.3s ease;
+}
+
+.beerCard:hover img{
+  transform: scale(1.05);
+}
+
+.beerCard strong {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 24px 24px 4px;
+  letter-spacing: -0.5px;
+  line-height: 1.3;
+}
+
+.beerCard p {
+  padding: 0 24px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin: 8px 0;
+  letter-spacing: -0.1px;
+}
+
+.beerCard p:last-of-type {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 12px;
+  letter-spacing: -0.3px;
+}
+
+.beerCard button {
+  margin: 20px 24px 24px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #0a84ff 0%, #0077ed 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  letter-spacing: -0.2px;
+  box-shadow: 0 4px 16px rgba(10, 132, 255, 0.3);
+}
+
+.beerCard button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #0077ed 0%, #006dd6 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(10, 132, 255, 0.5);
+}
+
+.beerCard button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.beerCard button:disabled {
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .notAvailable{
-  color: #d67572;
+  color: var(--error);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 12px 24px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
 }
 
 .available{
-  color: #72C4D6;
+  color: var(--success);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 12px 24px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
 }
 
 @media only screen and (min-width: 600px){
   .beerCardWrapper{
+    grid-template-columns: repeat(3, 1fr);
+    gap: 56px;
+  }
+}
+
+@media only screen and (min-width: 1200px){
+  .beerCardWrapper{
     grid-template-columns: repeat(4, 1fr);
+    gap: 64px;
+  }
+}
+
+@media only screen and (max-width: 768px){
+  header {
+    padding: 20px 24px;
+  }
+  
+  header h1 {
+    font-size: 26px;
+  }
+  
+  .cart {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  main {
+    padding: 60px 24px 80px;
+  }
+  
+  .beerCardWrapper{
+    gap: 24px;
   }
 }

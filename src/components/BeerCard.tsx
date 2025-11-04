@@ -7,15 +7,17 @@ export type BeerCardType = {
   available: boolean
 }
 
-const BeerCard = (props: BeerCardType) => {
+const BeerCard = (props: {beer: BeerCardType, addToCart: (b: BeerCardType)=> void}) => {
   return (
     <div className='beerCard'>
-      <img src={props.image} alt="" />
-      <strong>{props.name}</strong>
-      <p>{props.price} Ft</p>
+      <img src={props.beer.image} alt="" />
+      <strong>{props.beer.name}</strong>
+      <p>{props.beer.price} Ft</p>
 
-      {props.available ? <strong className="available">Raktáron</strong> : <strong className="notAvailable">Nincs Raktáron</strong>}
-      <p></p>
+      {props.beer.available ? <strong className="available">Raktáron</strong> : <strong className="notAvailable">Nincs Raktáron</strong>}
+      <button onClick={() => props.addToCart(props.beer)}>Kosárba</button>
+
+
 
 
     </div>
